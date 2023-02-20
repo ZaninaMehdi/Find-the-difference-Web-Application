@@ -4,7 +4,6 @@
 - [How to Play](#how-to-play)
 - [Features](#features)
 - [Installation](#installation)
-- [Contact](#contact)
 
 ## Introduction
 
@@ -34,8 +33,3 @@ To install and run the project locally, follow these steps:
 4. Go to server/app/constants and add your mongoDb identifiers
 5. Launch the server and the client using npm start
 
-## Contact
-
-If you have any questions or feedback, please don't hesitate to contact us. You can reach us at `mehdizanina9@gmail.com`.
-
-We hope you enjoy playing our "Find the Differences" game! Have fun!
