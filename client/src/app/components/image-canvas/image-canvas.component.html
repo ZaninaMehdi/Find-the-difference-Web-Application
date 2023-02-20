@@ -1,0 +1,51 @@
+<div id="workbench">
+    <div id="original-canvas-wrapper">
+        <div class="canvas-container">
+            <canvas id="background" [attr.height]="height" [attr.width]="width" #canvasBG></canvas>
+            <canvas id="foreground" [attr.height]="height" [attr.width]="width" #canvasFG></canvas>
+            <input type="file" (change)="displayImage($event)" #selectedImage />
+        </div>
+        <div id="toolbar">
+            <div class="wrapper">
+                <mat-button-toggle [checked]="isPencil" class="tool" mat-raised-button matTooltip="Crayon" (click)="selectPencil()"
+                    ><mat-icon>edit</mat-icon></mat-button-toggle
+                >
+                <mat-card *ngIf="isPencilWidthShown">
+                    <label id="title">Choisis l'épaisseur du crayon</label>
+                    <label>{{ pencilWidth }}</label>
+                    <mat-slider color="warn" max="15" min="1" [ngModel]="pencilWidth" (ngModelChange)="changePencilWidth($event)"> </mat-slider>
+                    <button mat-raised-button type="button" matTooltip="Fermer" color="warn" (click)="closePencilSlider()">Fermer</button>
+                </mat-card>
+            </div>
+            <button mat-raised-button matTooltip="Couleur" (click)="colorPalette.click()"><mat-icon>palette</mat-icon></button>
+            <input type="color" (change)="changeColor($event)" #colorPalette />
+            <div class="wrapper">
+                <mat-button-toggle [checked]="isEraser" class="tool" mat-raised-button matTooltip="Efface" (click)="selectEraser()"
+                    ><mat-icon>auto_fix_high</mat-icon></mat-button-toggle
+                >
+                <mat-card *ngIf="isEraserWidthShown">
+                    <label id="title">Choisis l'épaisseur de l'efface</label>
+                    <label>{{ eraserWidth }}</label>
+                    <mat-slider color="warn" max="20" min="3" [ngModel]="eraserWidth" (ngModelChange)="changeEraserWidth($event)"> </mat-slider>
+                    <button mat-raised-button type="button" matTooltip="Fermer" color="warn" (click)="closeEraserSlider()">Fermer</button>
+                </mat-card>
+            </div>
+            <button mat-raised-button matTooltip="Dupliquer l'avant-plan" (click)="duplicateCanvas()"><mat-icon>filter</mat-icon></button>
+            <button mat-raised-button matTooltip="Intervertir" (click)="swapCanvasesFG()"><mat-icon>compare_arrows</mat-icon></button>
+            <button mat-raised-button matTooltip="Réinitialiser la zone de dessin" (click)="resetCanvasFG()"><mat-icon>close</mat-icon></button>
+            <button mat-raised-button matTooltip="Annuler" [disabled]="isUndoDisabled" (click)="undo()"><mat-icon>undo</mat-icon></button>
+            <button mat-raised-button matTooltip="Refaire" [disabled]="isRedoDisabled" (click)="redo()"><mat-icon>redo</mat-icon></button>
+        </div>
+    </div>
+</div>
+<div id="canvas-button-area">
+    <div class="canvas-buttons" id="original-canvas-buttons">
+        <button mat-raised-button matTooltip="Téléverser une image en format BMP de taille 640x480" (click)="selectedImage.click()">
+            Ajouter Image<mat-icon>add</mat-icon>
+        </button>
+        <button mat-raised-button type="button" matTooltip="Réinitialiser l'arrière-plan" color="warn" (click)="resetCanvasBG()">
+            Réinitialiser l'arrière-plan
+        </button>
+    </div>
+</div>
+<canvas style="display: none" [attr.height]="height" [attr.width]="width" #invisibleCanvas></canvas>

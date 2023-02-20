@@ -1,0 +1,36 @@
+.container {
+    position: relative;
+    border-bottom: 3px solid black;
+    background: rgba(0, 119, 255, 0);
+    background: rgba(0, 119, 255, 0.119);
+    display: inline-block;
+    width: 100%;
+}
+
+.game-data-area {
+    position: relative;
+    min-height: 200px;
+    display: inline;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.title {
+    height: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.hint-area {
+    position: relative;
+    display: inline;
+    flex-direction: column;
+    align-items: center;
+}
+
+p {
+    padding-left: 30px;
+    padding-right: 30px;
+    display: inline;
+}

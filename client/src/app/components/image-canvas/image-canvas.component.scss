@@ -1,0 +1,94 @@
+#workbench {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+#original-canvas-wrapper {
+    position: relative;
+}
+
+.canvas-container {
+    position: relative;
+    margin: 10px;
+    height: 480px;
+    width: 640px;
+    display: inline-block;
+}
+
+canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+    border: 3px solid black;
+}
+
+#background {
+    z-index: 0;
+}
+
+#foreground {
+    z-index: 1;
+}
+
+#toolbar {
+    position: relative;
+    margin: 14px 5px 0px 5px;
+    width: 80px;
+    height: 480px;
+    float: right;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+#toolbar button {
+    height: 40px;
+}
+
+.wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+tool:focus {
+    background: red;
+}
+
+input {
+    display: none;
+}
+
+#canvas-button-area {
+    padding: 10px;
+    padding-right: 80px;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+}
+
+.canvas-buttons button {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+mat-slider {
+    width: 50px;
+}
+
+mat-card {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    z-index: 2;
+    width: 150px;
+}
+
+mat-card #title {
+    padding-bottom: 15px;
+}

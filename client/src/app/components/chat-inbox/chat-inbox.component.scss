@@ -1,0 +1,128 @@
+.chat-messages-show-container {
+  background: white;
+  height: 600px;
+  width: 210px;
+  display: flex;
+  flex-direction: column-reverse;
+  overflow: auto;
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+}
+
+.chat-messages-show-container::-webkit-scrollbar-track {
+  background-color: #e2e2e2;
+}
+
+.chat-messages-show-container::-webkit-scrollbar {
+  width: 6px;
+  background-color: #F5F5F5;
+}
+
+.chat-messages-show-container::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  background-color: #545454;
+}
+
+.chat-messages-show-list {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+
+  &.me {
+    align-items: flex-end;
+
+    .message-content {
+      max-width: 100px;
+      overflow-wrap: break-word;
+      background-color: rgba(0, 119, 255, 0.119);
+      border-radius: 5px;
+      border-width: 1px;
+      border-style: solid;
+      margin-right: 5px;
+    }
+  }
+
+  &.guest {
+    align-items: flex-start;
+
+    .message-content {
+      max-width: 100px;
+      overflow-wrap: break-word;
+      background-color: white;
+      border-style: solid;
+      border-width: 1px;
+      border-radius: 5px;
+      margin-left: 5px;
+    }
+  }
+
+  &.server {
+    align-items: stretch;
+
+    .message-content {
+      background-color: grey;
+      border-style: solid;
+      border-width: 1px;
+      border-radius: 5px;
+      padding: 5px;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+
+  .time {
+    text-align: right;
+    font-size: 10px;
+    color: #959698
+  }
+
+}
+
+.chat-messages-create-container {
+  border-style: solid;
+  border-width: 1px;
+  border-color: grey;
+  border-top: hidden;
+  background: rgba(0, 119, 255, 0.119);
+  height: 100px;
+  width: 210px;
+  display: flex;
+  justify-content: left;
+}
+
+.chat-messages-create-input {
+  margin: 29px 8px;
+  resize: none;
+  width: 100%;
+  overflow: auto;
+  overflow-x: hidden;
+
+}
+
+.chat-messages-create-input::-webkit-scrollbar-track {
+  background-color: #e2e2e2;
+}
+
+.chat-messages-create-input::-webkit-scrollbar {
+  width: 6px;
+  background-color: #F5F5F5;
+}
+
+.chat-messages-create-input::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  background-color: #545454;
+}
+
+.chat-messages-create-button {
+  height: 41px;
+  margin: auto 6px;
+  width: 84px;
+}
+
+mat-hint {
+  font-size: x-small;
+  margin: 67px -24px;
+  width: 56px;
+}

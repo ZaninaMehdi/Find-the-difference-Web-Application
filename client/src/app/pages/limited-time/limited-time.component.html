@@ -1,0 +1,44 @@
+<div class="backdrop"></div>
+<div class="alert-box">
+    <div *ngIf="games.length > 0">
+        <h1 mat-dialog-title>Démarrez une partie en temps limité !</h1>
+        <mat-form-field appearance="fill">
+            <mat-label>Choisir le nom du joueur</mat-label>
+            <input matInput type="text" maxlength="30" [(ngModel)]="playerName" />
+            <button *ngIf="playerName" matSuffix mat-icon-button aria-label="Clear" (click)="playerName = ''">
+                <mat-icon>close</mat-icon>
+            </button>
+            <mat-hint align="end"> {{ playerName.length || 0 }} / 30</mat-hint>
+        </mat-form-field>
+
+        <mat-dialog-actions id="button-area">
+            <button mat-raised-button color="primary" (click)="goBack()">Revenir</button>
+            <button mat-raised-button color="primary" (click)="createSoloGame()" [disabled]="!playerName || !(playerName.trim().length > 0)">
+                Mode solo
+            </button>
+            <button
+                *ngIf="(!isAvailableRoom() || goBackLimited) && !isLimitedRoomCreated"
+                mat-raised-button
+                color="primary"
+                (click)="createMultiGame()"
+                [disabled]="!playerName || !(playerName.trim().length > 0)"
+            >
+                Mode coopératif
+            </button>
+            <button
+                *ngIf="(isAvailableRoom() && !goBackLimited) || isLimitedRoomCreated"
+                mat-raised-button
+                color="primary"
+                (click)="joinMultiGame()"
+                [disabled]="!playerName || !(playerName.trim().length > 0)"
+            >
+                Joindre
+            </button>
+        </mat-dialog-actions>
+    </div>
+
+    <div *ngIf="games.length === 0">
+        <h1 mat-dialog-title>Aucun jeu n'est disponible</h1>
+        <mat-dialog-actions id="button-area"> <button mat-raised-button color="primary" (click)="goBack()">Revenir</button></mat-dialog-actions>
+    </div>
+</div>

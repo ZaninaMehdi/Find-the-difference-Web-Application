@@ -1,0 +1,65 @@
+
+ <div id="grid-container">
+    <div id="difference-area player-difference">
+        <div *ngIf="roomInformation && !isLimitedGame" class="players">
+            <div class="player-difference mt-1">
+                <P><p-tag value="Joueur {{ roomInformation.playerName }} : {{ roomInformation.differencesFound }} différences trouvées"> </p-tag></P>
+            </div>
+
+            <div *ngIf="roomInformation.guestInfo" class="player-difference">
+                <P><p-tag value="Joueur {{ roomInformation.guestInfo.guestName }} : {{ roomInformation.guestInfo.differencesFound }} différences trouvées" severity="success"></p-tag></P>
+            </div>
+        </div>
+
+        <div *ngIf="roomInformation && isLimitedGame" class="players">
+            <div *ngIf="!roomInformation.guestInfo" class="player-difference mt-1">
+                <P><p-tag value="Joueur {{ roomInformation.playerName }} : {{ roomInformation.differencesFound }} différences trouvées"> </p-tag></P>
+            </div>
+
+            <div *ngIf="roomInformation.guestInfo" class="player-difference">
+                <P>{{ roomInformation.differencesFound }} différences trouvées</P>
+                <P><p-tag class="mt-1" value="Joueur {{ roomInformation.playerName }}"></p-tag></P>
+                <P><p-tag value="Joueur {{ roomInformation.guestInfo.guestName }}" severity="success"></p-tag></P>
+            </div>
+        </div>
+
+        <div id="canvas-area" class="canvas-wrapper">
+            <div class="canvas-container">
+                <canvas
+                    id="originalFG"
+                    [attr.height]="height"
+                    [attr.width]="width"
+                    #originalCanvasFG
+                    (click)="mouseHitDetectOriginalImage($event)"
+                ></canvas>
+                <canvas
+                    id="original"
+                    [attr.height]="height"
+                    [attr.width]="width"
+                    #originalCanvas
+                    (click)="mouseHitDetectOriginalImage($event)"
+                ></canvas>
+            </div>
+            <div class="canvas-container">
+                <canvas
+                    id="modifiedFG"
+                    [attr.height]="height"
+                    [attr.width]="width"
+                    #modifiedCanvasFG
+                    (click)="mouseHitDetectModifiedImage($event)"
+                ></canvas>
+                <canvas
+                    id="modified"
+                    [attr.height]="height"
+                    [attr.width]="width"
+                    #modifiedCanvas
+                    (click)="mouseHitDetectModifiedImage($event)"
+                ></canvas>
+            </div>
+        </div>
+        <div id="giveup-button">
+            <button pButton class="p-button-danger" (click)="confirmQuitGame($event)">Abandonner la partie</button>
+        </div>
+    </div>
+    <p-confirmPopup></p-confirmPopup>
+</div>

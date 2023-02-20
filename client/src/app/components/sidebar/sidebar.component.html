@@ -1,0 +1,30 @@
+<div class="container" *ngIf="roomInformation">
+    <div class="game-data-area">
+        <h2 class="title">Informations de la partie</h2>
+        <p><strong>Nom du jeu :</strong> {{ roomInformation.game.gameSheet.name }}</p>
+        <p><strong>Mode de jeu :</strong> {{ roomInformation.gameMode }}</p>
+        <p><strong>Nombre de différences :</strong> {{ roomInformation.game.gameSheet.differenceCounter }}</p>
+        <p><strong>Mode Triche (t)</strong></p>
+        <p *ngIf="roomInformation">
+            <button
+                pButton
+                aria-readonly="true"
+                label="{{ roomInformation.timer * 1000 | date: 'mm:ss' }}"
+                icon="pi pi-clock"
+                class="p-button-danger p-button-large"
+            ></button>
+        </p>
+
+        <p *ngIf="!roomInformation.guestInfo">
+            <button
+                [disabled]="hintDisabled"
+                pButton
+                class="p-button-warning p-button-rounded p-button-sm"
+                label="Indice (i)"
+                type="button"
+                (click)="hint()"
+            ></button>
+        </p>
+        <p *ngIf="!roomInformation.guestInfo" style="right: 0"><strong>Nombre d'indices restants : </strong>{{ hintsCount }}</p>
+    </div>
+</div>

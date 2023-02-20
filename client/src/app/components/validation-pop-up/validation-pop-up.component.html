@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Le nombre de différences est de {{ data.numberOfDifferences }} différences !</h1>
+<canvas [attr.height]="height" [attr.width]="width" #canvas></canvas>
+<p style="color: red" *ngIf="!areDifferencesValid()">
+    Le nombre de différences doit être entre 3 et 9 inclusivement, veuillez corriger la situation et réessayer !
+</p>
+<div id="form" *ngIf="areDifferencesValid()">
+    <mat-form-field appearance="fill">
+        <mat-label>Choisis un nom pour le jeu</mat-label>
+        <input matInput type="text" maxlength="30" [(ngModel)]="name" />
+        <button *ngIf="name" matSuffix mat-icon-button aria-label="Clear" (click)="name = ''">
+            <mat-icon>close</mat-icon>
+        </button>
+        <mat-hint align="end"> {{ name.length || 0 }} / 30</mat-hint>
+    </mat-form-field>
+</div>
+
+<div id="button-area" mat-dialog-actions>
+    <button mat-raised-button color="warn" mat-dialog-close>Fermer</button>
+    <button mat-raised-button color="primary" [disabled]="(!areDifferencesValid()  || !name) || !(this.name.trim().length > 0)" (click)="createGame()">Créer le jeu</button>
+</div>

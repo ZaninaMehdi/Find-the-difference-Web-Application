@@ -1,0 +1,15 @@
+<h1 mat-dialog-tite>Entrez votre nom</h1>
+
+<mat-form-field appearance="fill">
+    <mat-label>Choisissez un nom de joueur</mat-label>
+    <input matInput type="text" maxlength="30" [(ngModel)]="playerName" />
+    <button *ngIf="playerName" matSuffix mat-icon-button aria-label="Clear" (click)="playerName = ''">
+        <mat-icon>close</mat-icon>
+    </button>
+    <mat-hint align="end"> {{ playerName.length || 0 }} / 30</mat-hint>
+</mat-form-field>
+
+<div id="button-area" mat-dialog-actions>
+    <button mat-raised-button color="primary" mat-dialog-close>Fermer</button>
+    <button mat-raised-button color="primary" [disabled]="!playerName || !(playerName.trim().length > 0)" (click)="enterGame()">Entrer</button>
+</div>

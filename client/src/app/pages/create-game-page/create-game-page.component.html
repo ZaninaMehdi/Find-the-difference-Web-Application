@@ -1,0 +1,55 @@
+<body>
+<div class="scalein animation-duration-1000 main absolute" style="top: 7%">
+    <app-alert-message [error]="alert.error" *ngIf="!alert.valid" (closed)="closeAlert()"></app-alert-message>
+    <div id="canvas-area">
+        <app-image-canvas
+            #originalCanvas
+            [height]="height"
+            [width]="width"
+            [(isDefault)]="isOriginalDefault"
+            [isMainCanvas]="mainCanvas"
+            (alert)="handleAlert($event)"
+        ></app-image-canvas>
+        <app-image-canvas
+            #modifiableCanvas
+            [height]="height"
+            [width]="width"
+            [(isDefault)]="isModifiedDefault"
+            [isMainCanvas]="!mainCanvas"
+            (alert)="handleAlert($event)"
+        ></app-image-canvas>
+    </div>
+    <div id="canvas-button-area">
+        <div class="canvas-buttons" id="both canvases">
+            <input id="original-image" type="file" (change)="displayBothCanvases($event)" #image />
+            <button
+                mat-raised-button
+                color="primary"
+                matTooltip="Téléverser une image en format BMP et de taille 640x480 sur les deux zones"
+                (click)="image.click()"
+            >
+                Ajouter Image sur deux zones<mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </div>
+    <div id="configuration-buttons">
+        <div>
+            <p>Choisis le rayon d'élargissement:</p>
+            <mat-radio-group color="warn" aria-label="Select an option" [(ngModel)]="radius">
+                <mat-radio-button *ngFor="let rad of radiusValues" [value]="rad">{{ rad }}</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div>
+            <button
+                class="z-4"
+                mat-raised-button
+                color="accent"
+                matTooltip="Validate the images"
+                (click)="openValidateDialog()"
+            >
+                Valider
+            </button>
+        </div>
+    </div>
+</div>
+</body>

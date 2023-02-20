@@ -1,0 +1,20 @@
+<div class="backdrop"></div>
+<div class="alert-box">
+    <div *ngIf="endGameMessage">
+        <h1 mat-dialog-title>Partie Terminée!</h1>
+        <mat-dialog-content>{{ endGameMessage }}</mat-dialog-content>
+        <br>
+        <mat-dialog-actions>
+            <button mat-button mat-raised-button color="primary" (click)="redirect()">Fermer</button>
+        </mat-dialog-actions>
+    </div>
+
+    <div *ngIf="error">
+        <h1>Erreur</h1>
+        <div>{{ error }}</div>
+        <br />
+        <div>
+            <button type="button" (click)="onClose()" mat-raised-button color="warn">Close</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<header>
+    <app-sidebar #sideBar style="width: 100%"></app-sidebar>
+</header>
+<div class="container scalein animation-duration-1000">
+    <app-chat-inbox class="chat-inbox"></app-chat-inbox>
+    <section class="play-area-container">
+        <app-alert-message *ngIf="roomInfo && roomInfo.endGameMessage" [endGameMessage]="roomInfo.endGameMessage"> </app-alert-message>
+        <app-play-area class="play-area" tabindex="0"></app-play-area>
+    </section>
+</div>

@@ -1,0 +1,28 @@
+<div class="backdrop"></div>
+<div class="alert-box">
+    <div>
+        <h1 mat-dialog-title *ngIf="!isGameDeleted">En attente d'un autre joueur</h1>
+        <div *ngIf="guestPlayers && !isGameDeleted">
+            <div *ngFor="let guest of guestPlayers">
+                <mat-dialog-content>{{ guest.guestName }}</mat-dialog-content>
+                <mat-dialog-actions id="button-area">
+                    <button *ngIf="!isLimitedGame" pButton class="p-button-success p-button-sm" label="Accepter"
+                        [disabled]="!guest" (click)="acceptGuestPlayer(guest)" style="width: 100px;">
+                    </button>
+                    <button *ngIf="!isLimitedGame" pButton class="p-button-danger p-button-sm" label="Refuser"
+                        [disabled]="!guest" (click)="refuseGuestPlayer(guest)" style="width: 100px;">
+                    </button>
+                </mat-dialog-actions>
+            </div>
+        </div>
+
+        <mat-dialog-content *ngIf="isGameDeleted">
+            <h2>L'admin a supprimé la partie, vous allez être redirigé vers la page sélection</h2>
+        </mat-dialog-content>
+
+        <mat-dialog-actions id="button-area">
+            <button pButton class="p-button-warning p-button-sm" label="Revenir" (click)="goBack()"
+                style="width: 100px;"></button>
+        </mat-dialog-actions>
+    </div>
+</div>

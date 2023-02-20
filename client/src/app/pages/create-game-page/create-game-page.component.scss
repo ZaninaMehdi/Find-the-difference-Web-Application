@@ -1,0 +1,59 @@
+.main {
+    background-color: rgb(145, 191, 255);
+    justify-content: stretch;
+    width: 100%;
+    min-height: 92%;
+    overflow: hidden
+}
+
+#canvas-area {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+
+#canvas-button-area {
+    display: flex;
+    padding: 10px;
+    padding-right: 110px;
+    overflow: hidden;
+    justify-content: center;
+}
+
+input {
+    display: none;
+}
+
+.canvas-buttons button {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#configuration-buttons {
+    padding-right: 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#configuration-buttons div {
+    margin: 5px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#configuration-buttons #buttons {
+    padding-left: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#configuration-buttons p {
+    margin-right: 16px;
+}
+
+.mat-radio-button~.mat-radio-button {
+    margin-left: 16px;
+}

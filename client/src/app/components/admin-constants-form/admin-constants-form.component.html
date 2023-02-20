@@ -1,0 +1,59 @@
+<button pButton label="Constantes de jeu" class="p-button-primary" (click)="this.display = true" icon="pi pi-clock" style="width: 100%"></button>
+<p-dialog
+    id="modal-create-show"
+    [(visible)]="display"
+    header="Modifier les constantes de jeu"
+    [breakpoints]="{ '960px': '75vw', '640px': '100vw' }"
+    [style]="{ width: '20vw' }"
+>
+    <div class="grid">
+        <div class="p-fluid col-8">
+            <header>Temps initial (min : {{minDateInitialTime | date : "mm:ss"}} / max : {{maxDateInitialTime | date : "mm:ss"}})</header>
+            <p-calendar
+                [(ngModel)]="adminConstants.initialTime"
+                id="initialTime"
+                [timeOnly]="true"
+                inputId="timeonly"
+                [showSeconds]="true"
+                [style]="{ width: '100%' }"
+                [minDate]="minDateInitialTime"
+                [maxDate]="maxDateInitialTime"
+                [readonlyInput]="true"
+            ></p-calendar>
+        </div>
+        <div class="p-fluid col-8">
+            <header>Temps de Pénalité (min : {{minDate | date : "mm:ss"}} / max : {{maxDate | date : "mm:ss"}})</header>
+            <p-calendar
+                [(ngModel)]="adminConstants.penaltyTime"
+                id="penaltyTime"
+                [timeOnly]="true"
+                inputId="timeonly"
+                [showSeconds]="true"
+                [style]="{ width: '100%' }" 
+                [minDate]="minDate"
+                [maxDate]="maxDate"
+                [readonlyInput]="true"
+            ></p-calendar>
+        </div>
+        <div class="p-fluid col-8">
+            <header>Temps bonus (min : {{minDate | date : "mm:ss"}} / max : {{maxDate | date : "mm:ss"}})</header>
+            <p-calendar
+                [(ngModel)]="adminConstants.bonusTime"
+                id="bonusTime"
+                [timeOnly]="true"
+                inputId="timeonly"
+                [showSeconds]="true"
+                [style]="{ width: '100%' }"
+                [minDate]="minDate"
+                [maxDate]="maxDate"
+                [readonlyInput]="true"
+            ></p-calendar>
+        </div>
+        <div class="col-12"></div>
+        <div class="col-12">
+            <button pButton style="float: right" icon="pi pi-check" label="Confirmer" (click)="confirmModifyConstants($event)"></button>
+        </div>
+    </div>
+    <p-confirmPopup></p-confirmPopup>
+    
+</p-dialog>

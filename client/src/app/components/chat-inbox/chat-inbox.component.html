@@ -1,0 +1,24 @@
+<div class="grid">
+  <div class="col-12 ">
+    <div class="chat-messages">
+      <div class="chat-messages-show-container">
+        <div class="chat-messages-show-list" [ngClass]="message.sender" *ngFor="let message of messages">
+          <span class="message-content">{{message.message}} <div class="time"> {{message.time | date : "hh:mm:ss"}}
+            </div>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="col-12" style="padding: 0;">
+      <div class="chat-messages-create-container" *ngIf="roomInformation && roomInformation.guestInfo">
+        <textarea type="text" class="chat-messages-create-input" maxlength="200" [(ngModel)]="message"
+          placeholder="Entrez votre message" (keyup)="onKeyEvent($event)">
+    </textarea>
+        <mat-hint align="start"> {{ message.length || 0 }} / 200</mat-hint>
+        <button class="chat-messages-create-button" [disabled]="isEmpty()" type="button" (click)="sendMessage()">
+          Send
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

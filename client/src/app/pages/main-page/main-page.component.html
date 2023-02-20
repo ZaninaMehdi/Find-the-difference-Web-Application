@@ -1,0 +1,26 @@
+<body>
+    <div class="absolute" style="top: 5%; width: 100%">
+        <div class="container">
+            <section class="example-flex-container-col">
+                <img src="assets\img\logo-find-the-diff" width="300" height="300" />
+                <section class="example-flex-container-row">
+                    <button *ngIf="!isBddNotConnected" mat-raised-button routerLink="/selection">Mode classique</button>
+                    <button *ngIf="!isBddNotConnected" mat-raised-button routerLink="/limited-time">Mode temps limité</button>
+                    <button *ngIf="!isBddNotConnected" mat-raised-button routerLink="/admin">Administration</button>
+                </section>
+
+                <h2 class="example-flex-container-row" *ngIf="isBddNotConnected">
+                    Une erreur est survenue lors de la connection à la base de données sur MongoDB.
+                </h2>
+            </section>
+        </div>
+
+        <footer class="footer-item z-2">
+            <h4 class="team-name">Équipe 102</h4>
+            <p>
+                <span>Dylane Chikhoune</span>, <span>Youssef Benjaafer</span>, <span>Aymane Chalh</span>, <span>Mehdi Zanina</span>,
+                <span>Anass El Kettani</span>, <span>Lina Khial</span>
+            </p>
+        </footer>
+    </div>
+</body>

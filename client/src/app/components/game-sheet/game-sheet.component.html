@@ -1,0 +1,58 @@
+<div style="max-width: 100%; overflow-x: hidden">
+    <div *ngIf="game" class="grid">
+        <div class="col-6" style="height: 35px">
+            <h2>Nom du jeu : <u>{{ game.name }}</u></h2>
+        </div>
+        <div class="col-6" style="height: 35px">
+            <h2>Top 3</h2>
+        </div>
+        <img [src]="game.link" alt="" class="col-4 border ml-2 mt-3" height="100%" />
+        <p-table class="col-7" [value]="sortedSoloGame">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>
+                        <h2>Classement</h2>
+                    </th>
+                    <th [height]="2" colspan="1">
+                        <h2>Solo</h2>
+                    </th>
+                    <th style="max-height: 10px" colspan="1">
+                        <h2>1 Vs 1</h2>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" *ngIf="sortedMultiplayerGame.length > 0" let-element let-rowIndex="rowIndex">
+                <tr>
+                    <td>{{ rowIndex + 1 }}</td>
+                    <td colspan="1">{{ element.time * 1000 | date: 'mm:ss' }}, {{ element.name }}</td>
+                    <td colspan="1" *ngIf="sortedMultiplayerGame[rowIndex]">
+                        {{ sortedMultiplayerGame[rowIndex].time * 1000 | date: 'mm:ss' }}, {{ sortedMultiplayerGame[rowIndex].name }}
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="footer"> </ng-template>
+        </p-table>
+        <div class="col-12">
+            <div class="grid">
+                <div class="col-6">
+                    <button pButton class="p-button-success play-button" *ngIf="componentName === 'selection-view'"
+                        (click)="play()" label="Jouer en solo" icon="pi pi-play"></button>
+                    <button pButton icon="pi pi-trash" class="p-button-danger delete-button" label="Supprimer ce jeu" title="Supprimer ce jeu définitivement"
+                        *ngIf="componentName === 'admin-view'" (click)="confirmDeleteGame($event)">
+                    </button>
+                </div>
+                <div class="col-5" >
+                    <button pButton *ngIf="componentName === 'selection-view' && !isAvailableRoom()"
+                        (click)="createMultiplayerGame()" label="Créer une partie 1 vs 1" icon="pi pi-plus"></button>
+                    <button pButton *ngIf="componentName === 'selection-view' && isAvailableRoom()"
+                        (click)="joinMultiplayerGame()" label="Joindre une partie 1 vs 1" icon="pi pi-users"></button>
+                    <button pButton class="p-button-warning" title="Réinitialiser les meilleurs temps de ce jeu"
+                        *ngIf="componentName === 'admin-view'" [disabled]="shouldActivateResetButton()" (click)="deleteBestTimes()" label="Réinitialiser les temps" icon="pi pi-refresh">
+                        
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p-confirmPopup></p-confirmPopup>
+</div>

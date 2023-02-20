@@ -1,0 +1,22 @@
+<div class="backdrop"></div>
+<div class="alert-box">
+    <div>
+        <h1 mat-dialog-title *ngIf="!guestName && !hasGoneBack && !isGameDeleted">En attente de la réponse du host</h1>
+
+        <mat-dialog-content>
+            <h2 *ngIf="guestName && !hasGoneBack">Le Host vous a refusé, vous allez être redirigé vers la page selection en cliquant sur revenir</h2>
+            <h2 *ngIf="hasGoneBack && !isGameDeleted">
+                Le Host a quitté la page d'attente, et le jeu multijoueur n'est plus disponible, vous allez être redirigé vers la page sélection en
+                cliquant sur revenir.
+            </h2>
+        </mat-dialog-content>
+
+        <mat-dialog-content *ngIf="isGameDeleted">
+            <h2>L'admin a supprimé la partie, vous allez être redirigé vers la page sélection</h2>
+        </mat-dialog-content>
+
+        <mat-dialog-actions id="button-area">
+            <button pButton class="p-button-warning" (click)="goBack()">Revenir</button>
+        </mat-dialog-actions>
+    </div>
+</div>
