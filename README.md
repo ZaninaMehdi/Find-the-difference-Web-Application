@@ -28,9 +28,11 @@ Here are some key features of our web application:
 
 To install and run the project locally, follow these steps:
 
-1. Clone the repository: git clone 'https://github.com/yourusername/spot-the-difference.git'
+1. Clone the repository: git clone 'https://github.com/ZaninaMehdi/Find-the-difference-Web-Application.git'
 2. Navigate to the project directory
 3. Install the necessary dependencies: npm install
+4. Go to server/app/constants and add your mongoDb identifiers
+5. Launch the server and the client using npm start
 
 ## Contact
 
